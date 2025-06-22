@@ -1,11 +1,211 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Contagem Regressiva para o Dia de São Tarcísio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Playfair+Display:wght@700&display=swap');
+        
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            min-height: 100vh;
+        }
+        
+        .title-font {
+            font-family: 'Playfair Display', serif;
+        }
+        
+        .saint-card {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+        
+        .saint-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+        }
+        
+        .countdown-number {
+            font-size: clamp(2rem, 8vw, 4rem);
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        
+        .halo {
+            position: relative;
+        }
+        
+        .halo::after {
+            content: '';
+            position: absolute;
+            top: -10px;
+            left: -10px;
+            right: -10px;
+            bottom: -10px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.2) 0%, rgba(118, 75, 162, 0.2) 100%);
+            z-index: -1;
+            animation: pulse 3s infinite;
+        }
+        
+        @keyframes pulse {
+            0% { transform: scale(0.95); opacity: 0.7; }
+            50% { transform: scale(1.05); opacity: 0.9; }
+            100% { transform: scale(0.95); opacity: 0.7; }
+        }
+        
+        .floating {
+            animation: floating 3s ease-in-out infinite;
+        }
+        
+        @keyframes floating {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0px); }
+        }
+    </style>
 </head>
-<body>
-    
+<body class="flex flex-col items-center justify-center p-4">
+    <div class="max-w-4xl w-full">
+        <div class="saint-card rounded-2xl p-8 md:p-10 mb-8">
+            <div class="flex flex-col md:flex-row items-center gap-8">
+                <div class="relative">
+                    <div class="halo">
+                        <img src="https://i.postimg.cc/9Xw1X0j0/saint-tarcisius.jpg" alt="São Tarcísio" class="w-40 h-40 md:w-48 md:h-48 rounded-full object-cover border-4 border-white shadow-lg floating">
+                    </div>
+                </div>
+                <div class="text-center md:text-left mt-4 md:mt-0">
+                    <h1 class="title-font text-3xl md:text-4xl font-bold text-gray-800 mb-2">Contagem Regressiva para o Dia de São Tarcísio</h1>
+                    <p class="text-gray-600 mb-4">Padroeiro dos Coroinhas e Ministros Extraordinários da Sagrada Eucaristia</p>
+                    <div class="flex justify-center md:justify-start gap-2">
+                        <span class="bg-purple-100 text-purple-800 text-xs font-medium px-2.5 py-0.5 rounded-full">15 de Agosto</span>
+                        <span class="bg-blue-100 text-blue-800 text-xs font-medium px-2.5 py-0.5 rounded-full">Padroeiro dos Coroinhas</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="saint-card rounded-2xl p-8 md:p-10 mb-8">
+            <div id="countdown" class="grid grid-cols-2 md:grid-cols-4 gap-4 text-center">
+                <!-- Countdown will be inserted here by JavaScript -->
+            </div>
+        </div>
+        
+        <div class="saint-card rounded-2xl p-8 md:p-10">
+            <h2 class="title-font text-2xl md:text-3xl font-bold text-gray-800 mb-6 text-center">Quem foi São Tarcísio?</h2>
+            <div class="grid md:grid-cols-2 gap-8 items-center">
+                <div>
+                    <p class="text-gray-700 mb-4">São Tarcísio foi um jovem mártir cristão do século III, venerado como santo pela Igreja Católica. Ele é conhecido por ter sido morto enquanto levava a Eucaristia para cristãos presos nas masmorras romanas.</p>
+                    <p class="text-gray-700 mb-4">Segundo a tradição, Tarcísio era acólito (coroinha) em Roma e foi encarregado de levar a Eucaristia aos cristãos presos durante a perseguição do imperador Valeriano. No caminho, foi reconhecido e atacado por uma multidão pagã que queria profanar a Eucaristia.</p>
+                    <p class="text-gray-700">Mesmo sob ameaça de morte, Tarcísio preferiu morrer a entregar as Sagradas Hóstias. Seu corpo foi recolhido por um soldado cristão e sepultado nas catacumbas de São Calisto.</p>
+                </div>
+                <div class="flex justify-center">
+                    <div class="relative w-full max-w-xs">
+                        <div class="absolute -inset-4 bg-gradient-to-r from-purple-400 to-blue-500 rounded-lg blur opacity-25"></div>
+                        <img src="https://i.postimg.cc/8zVQ7JQ0/saint-tarcisius-art.jpg" alt="Representação artística de São Tarcísio" class="relative rounded-lg shadow-lg w-full h-auto">
+                    </div>
+                </div>
+            </div>
+            
+            <div class="mt-10">
+                <h3 class="title-font text-xl font-bold text-gray-800 mb-4 text-center">Oração a São Tarcísio</h3>
+                <div class="bg-blue-50 border-l-4 border-blue-500 p-4 rounded-r-lg">
+                    <p class="italic text-gray-700 mb-2">"Ó glorioso São Tarcísio, que destes a vida para guardar a Eucaristia, alcançai-nos a graça de amar cada vez mais Jesus Sacramentado, de participar dignamente da Santa Missa e de receber com frequência a Sagrada Comunhão."</p>
+                    <p class="italic text-gray-700 mb-2">"Protegei especialmente os coroinhas e todos os ministros do altar, para que sirvam com amor e reverência. Amém."</p>
+                </div>
+            </div>
+        </div>
+        
+        <footer class="mt-10 text-center text-gray-500 text-sm">
+            <p>© 2023 Contagem Regressiva para o Dia de São Tarcísio</p>
+            <p class="mt-1">Desenvolvido com ❤️ para os devotos de São Tarcísio</p>
+        </footer>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Set the target date (August 15th)
+            const now = new Date();
+            let targetDate = new Date(now.getFullYear(), 7, 15); // Month is 0-indexed (7 = August)
+            
+            // If August 15th has already passed this year, set for next year
+            if (now > targetDate) {
+                targetDate = new Date(now.getFullYear() + 1, 7, 15);
+            }
+            
+            function updateCountdown() {
+                const now = new Date();
+                const diff = targetDate - now;
+                
+                // Calculate days, hours, minutes, seconds
+                const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+                
+                // Display the countdown
+                const countdownElement = document.getElementById('countdown');
+                countdownElement.innerHTML = `
+                    <div class="p-4 rounded-xl bg-white shadow-inner">
+                        <div class="countdown-number font-bold mb-2">${days}</div>
+                        <div class="text-sm font-medium text-gray-500">Dias</div>
+                    </div>
+                    <div class="p-4 rounded-xl bg-white shadow-inner">
+                        <div class="countdown-number font-bold mb-2">${hours}</div>
+                        <div class="text-sm font-medium text-gray-500">Horas</div>
+                    </div>
+                    <div class="p-4 rounded-xl bg-white shadow-inner">
+                        <div class="countdown-number font-bold mb-2">${minutes}</div>
+                        <div class="text-sm font-medium text-gray-500">Minutos</div>
+                    </div>
+                    <div class="p-4 rounded-xl bg-white shadow-inner">
+                        <div class="countdown-number font-bold mb-2">${seconds}</div>
+                        <div class="text-sm font-medium text-gray-500">Segundos</div>
+                    </div>
+                `;
+                
+                // If the countdown is over
+                if (diff < 0) {
+                    countdownElement.innerHTML = `
+                        <div class="col-span-4 py-8 text-center">
+                            <div class="inline-block p-4 bg-gradient-to-r from-green-400 to-blue-500 rounded-full text-white mb-4">
+                                <i class="fas fa-check-circle text-4xl"></i>
+                            </div>
+                            <h3 class="text-2xl font-bold text-gray-800 mb-2">Hoje é o Dia de São Tarcísio!</h3>
+                            <p class="text-gray-600">Celebremos a vida e o martírio deste jovem santo!</p>
+                        </div>
+                    `;
+                    return;
+                }
+                
+                // Update every second
+                setTimeout(updateCountdown, 1000);
+            }
+            
+            // Initialize the countdown
+            updateCountdown();
+            
+            // Add animation to countdown numbers on hover
+            document.addEventListener('mouseover', function(e) {
+                if (e.target.classList.contains('countdown-number')) {
+                    e.target.parentElement.classList.add('transform', 'scale-105', 'transition', 'duration-300');
+                }
+            });
+            
+            document.addEventListener('mouseout', function(e) {
+                if (e.target.classList.contains('countdown-number')) {
+                    e.target.parentElement.classList.remove('transform', 'scale-105', 'transition', 'duration-300');
+                }
+            });
+        });
+    </script>
 </body>
 </html>
